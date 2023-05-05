@@ -31,7 +31,7 @@ const arrayAnimales = [
   },
   {
     datos:{
-    Nombre: "Flora",
+    nombre: "Flora",
     especie: "Gato",
     fechaNacimiento: "2020-02-15",
     sexo: "Hembra",
@@ -57,7 +57,7 @@ const arrayAnimales = [
     datos:{
     nombre: "Tronco",
     especie: 'Perro',
-    fecha_nacimiento: '2017-04-15',
+    fechaNacimiento: '2017-04-15',
     sexo: 'Macho',
     tamaño: 'Grande',
     peso: 30,
@@ -73,15 +73,15 @@ const arrayAnimales = [
     },
     adopcion: {
       requisitos: 'Debe tener un patio grande y cercado para que pueda correr y jugar, y preferiblemente tener experiencia previa en la tenencia de perros activos y grandes.',
-      tasa_adopcion: 200,
-      envio_outra_ciudad: true
+      tasaAdopcion: 200,
+      envioOtraCiudad: true
     }
   },
   {
     datos:{
     nombre: "Calcetines",
     especie: 'Gato',
-    fecha_nacimiento: '2019-08-10',
+    fechaNacimiento: '2019-08-10',
     sexo: 'Hembra',
     tamaño: 'Mediano',
     peso: 4,
@@ -97,8 +97,8 @@ const arrayAnimales = [
     },
     adopcion: {
       requisitos: 'Debe ser adoptado por alguien que tenga experiencia previa en la tenencia de gatos y pueda proporcionarle un hogar tranquilo y seguro.',
-      tasa_adopcion: 100,
-      envio_outra_ciudad: false
+      tasaAdopcion: 100,
+      envioOtraCiudad: false
     }
   }
 ];
