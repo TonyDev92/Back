@@ -9,7 +9,8 @@ const animalesSchema = new mongoose.Schema({
     tamaño: { type: String, required: true },
     peso: { type: Number, required: true },
     personalidad: { type: String, required: true },
-    historia: { type: String, required: true },
+    historia: { type: String, required: true }
+    // imagen: {type:String,required:false} PENDIENTE!!!
   },
   salud: {
     vacunado: { type: Boolean, required: true },

@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const animalesController = require('../controllers/animales.controller');
 
-router.get('/', animalesController.obtenerAnimales);
-router.get('/:id', animalesController.obtenerAnimalPorId);
-router.post('/', animalesController.crearAnimal);
-router.put('/:id', animalesController.actualizarAnimal);
-router.delete('/:id', animalesController.eliminarAnimal);
+router.get('/', animalesController.getAnimales);
+router.get('/:id', animalesController.getAnimalById);
+router.post('/', animalesController.postAnimal);
+router.put('/:id', animalesController.putAnimal);
+router.delete('/:id', animalesController.deleteAnimal);
 
 module.exports = router;
