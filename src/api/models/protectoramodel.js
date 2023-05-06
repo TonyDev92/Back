@@ -9,7 +9,7 @@ const protectoraSchema = new mongoose.Schema(
         name: {type: String , required: true},
         direction : {type: String, required: true},
         telephone : {type: Number , required:true},
-        image : {type:String , required: false}, 
+        image : {type:String , required: false, default: "https://res.cloudinary.com/dpekebzbd/image/upload/v1683388749/Lucky/Default_xajfm0.png" }, 
         animals : [{type: mongoose.Types.ObjectId, ref: 'Animales'}]
     },{
         timestamps: true

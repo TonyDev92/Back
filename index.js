@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cloudinary = require('cloudinary').v2;
 const cors = require('cors');
 const { connect } = require('./src/utils/database');
 const routerUser = require('./src/api/routes/routes');
@@ -11,6 +12,11 @@ const PORT = process.env.PORT || 5000;
 connect();
 
 
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET
+})
 
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
