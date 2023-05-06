@@ -9,8 +9,8 @@
       tamaño: { type: String, required: true },
       peso: { type: Number, required: true },
       personalidad: { type: String, required: true },
-      historia: { type: String, required: true }
-      // imagen: {type:String,required:false} PENDIENTE!!!
+      historia: { type: String, required: true },
+      imagen: {type:String,required:false , default: "https://res.cloudinary.com/dpekebzbd/image/upload/v1683388749/Lucky/Default_xajfm0.png"} 
     },
     salud: {
       vacunado: { type: Boolean, required: true },

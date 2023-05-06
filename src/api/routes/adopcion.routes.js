@@ -3,6 +3,6 @@ const adopcionController = require('../controllers/adopcion.controller');
 
 const router = express.Router();
 
-router.post('/adopciones', adopcionController.createAdopcion);
+router.post('/', adopcionController.postAdopcion);
 
 module.exports = router;

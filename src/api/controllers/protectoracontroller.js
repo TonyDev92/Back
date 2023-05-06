@@ -36,6 +36,8 @@ const protectoraRegister = async (req, res) => {
     try {
         const newProtectora = new Protectora(req.body);
 
+        newProtectora.image = req.file.path;
+        
         if(!validateEmail(newProtectora.email)){ //TEST EMAIL
             return res.status(400).json({message: 'Invalid Email'})
         }
