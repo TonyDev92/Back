@@ -5,6 +5,7 @@ const { connect } = require('./src/utils/database');
 const routerUser = require('./src/api/routes/routes');
 const routerAnimales = require('./src/api/routes/animales.routes');
 const routerProtectora = require('./src/api/routes/protectora.routes');
+const routerAdopcion = require('./src/api/routes/adopcion.routes');
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,6 +25,7 @@ app.use(cors({
 app.use('/user', routerUser);
 app.use('/animales', routerAnimales);
 app.use('/protectora', routerProtectora);
+app.use('/adopcion', routerAdopcion);
 
 
 app.use('*', (req, res) => {
