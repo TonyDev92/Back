@@ -29,6 +29,9 @@ exports.postAnimal = async (req, res) => {
   try {
     const animal = new Animales(req.body);
     const animalCreado = await animal.save();
+
+    animal.imagen = req.file.path;
+    
     res.status(201).json(animalCreado);
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al crear el animal', error });
