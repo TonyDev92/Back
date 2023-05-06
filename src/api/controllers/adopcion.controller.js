@@ -1,6 +1,6 @@
-const Adopcion = require('../models/adopciones.model');
+const Adopcion = require('../models/adopcion.model');
 
-exports.createAdopcion = async (req, res) => {
+exports.postAdopcion = async (req, res) => {
   try {
     const adopcion = new Adopcion({
       Datos: req.body.Datos,
