@@ -17,7 +17,8 @@ const getProtectora = async (req , res) => {
                 telephone: obj.telephone,
                 image: obj.image,
                 email: obj.email,
-                animals: obj.animals
+                animals: obj.animals,
+                city: obj.city
             }
             public.push(newObj);
         }
@@ -37,7 +38,7 @@ const protectoraRegister = async (req, res) => {
         const newProtectora = new Protectora(req.body);
 
         newProtectora.image = req.file.path;
-        
+
         if(!validateEmail(newProtectora.email)){ //TEST EMAIL
             return res.status(400).json({message: 'Invalid Email'})
         }
