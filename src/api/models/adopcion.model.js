@@ -9,7 +9,7 @@ const adopcionesSchema = new mongoose.Schema({
     CalleNumeroPiso: {type: String,required: true},
     CodigoPostal: {type: String,required: true},
     Ciudad: {type: String,required: true},
-    Usuario:{type:mongoose.Types.ObjectId,ref: 'Animales'}
+    Usuario:{type:mongoose.Types.ObjectId,ref:'user'}
   },
   Mascota: {
     OtrosAnimales: {type: Boolean,required: true},
