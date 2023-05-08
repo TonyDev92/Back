@@ -7,7 +7,7 @@ const arrayAnimales = [
   {
     "datos": {
       "nombre": "Garfield",
-      "especie": "Felino",
+      "especie": "Gato",
       "fechaNacimiento": "2019-04-01",
       "sexo": "Macho",
       "tamaño": "Pequeño",
@@ -33,7 +33,7 @@ const arrayAnimales = [
   {
     "datos": {
       "nombre": "Luna",
-      "especie": "Felino",
+      "especie": "Gato",
       "fechaNacimiento": "2020-09-15",
       "sexo": "Hembra",
       "tamaño": "Pequeño",
@@ -59,7 +59,7 @@ const arrayAnimales = [
   {
     "datos": {
       "nombre": "Max",
-      "especie": "Canino",
+      "especie": "Perro",
       "fechaNacimiento": "2018-01-10",
       "sexo": "Macho",
       "tamaño": "Mediano",
