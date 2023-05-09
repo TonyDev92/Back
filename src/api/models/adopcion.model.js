@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const adopcionesSchema = new mongoose.Schema({
   Datos: {
     NombreApellidos: {type: String,required: true},
-    Email: {type: String,required: true,unique: true},
+    Email: {type: String,required: true},
     Telefono: {type: String,required: true},
-    DNI: {type: String,required: true,unique: true},
+    DNI: {type: String,required: true},
     CalleNumeroPiso: {type: String,required: true},
     CodigoPostal: {type: String,required: true},
     Ciudad: {type: String,required: true},
