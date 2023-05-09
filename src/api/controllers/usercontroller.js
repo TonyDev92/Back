@@ -44,8 +44,8 @@ const userRegister = async (req, res) => {
         newUser.password = bcrypt.hashSync(newUser.password, 10); //HASH PASSWORD
         const newEmail = await newUser.save(); // SAVE THE NEW USER
         const token = generateSign(newEmail._id , newEmail.email)
-        return res.status(201).json(newEmail, token);
-
+        console.log(`user: ${newEmail} , token: ${token}`);
+        return res.status(201).json({newEmail, token});
 
     } catch (error) {
         return res.status(500).json(error);
