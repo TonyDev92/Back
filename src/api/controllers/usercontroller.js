@@ -2,7 +2,8 @@ const User = require('../models/usermodel');
 const bcrypt = require('bcrypt');
 const {generateSign} = require('../../utils/jsw');
 const {validateEmail, validateEmailOnUse , validatePassword} = require('../../utils/validators');
-
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
 //LOGIN USER METHOD
 const loginUser = async (req,res) => {
 
@@ -52,4 +53,25 @@ const userRegister = async (req, res) => {
     }
 }
 
-module.exports = {loginUser , userRegister};
+const updateUserImage = async (req, res) => {
+    try {
+        const uploadResult = await cloudinary.uploader.upload(req.file.path);
+        const imageUrl = uploadResult.secure_url;
+        const user = await User.findByIdAndUpdate(
+            req.params.id,
+            { imagen: imageUrl },
+            { new: true }
+        );
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        return res.status(200).json(user);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+};
+  
+  module.exports = { loginUser, userRegister, updateUserImage, multerUpload }; // actualizado
+  
