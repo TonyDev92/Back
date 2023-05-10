@@ -52,4 +52,24 @@ const userRegister = async (req, res) => {
     }
 }
 
-module.exports = {loginUser , userRegister};
+// ACTUALIZAR LA IMAGEN DE UN USUARIO
+const updateUserImage = async (req, res) => {
+    try {
+      const user = await User.findByIdAndUpdate(
+        req.params.id,
+        { imagen: req.body.imagen },
+        { new: true }
+      );
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  };
+  
+  module.exports = { loginUser, userRegister, updateUserImage }; // actualizado
+  
