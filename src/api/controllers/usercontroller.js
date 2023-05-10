@@ -52,4 +52,14 @@ const userRegister = async (req, res) => {
     }
 }
 
+const postUser = async (req,res) => {
+
+    try {
+        const { id } = req.params;
+        const putUser = new User(req.body);
+    } catch (error) {
+        
+    }
+}
+
 module.exports = {loginUser , userRegister};
