@@ -2,6 +2,7 @@ const User = require('../models/usermodel');
 const bcrypt = require('bcrypt');
 const {generateSign} = require('../../utils/jsw');
 const {validateEmail, validateEmailOnUse , validatePassword} = require('../../utils/validators');
+const { put } = require('../routes/animales.routes');
 
 //LOGIN USER METHOD
 const loginUser = async (req,res) => {
@@ -52,11 +53,12 @@ const userRegister = async (req, res) => {
     }
 }
 
-const postUser = async (req,res) => {
+const putUser = async (req,res) => {
 
     try {
         const { id } = req.params;
         const putUser = new User(req.body);
+        putUser._id = id;
     } catch (error) {
         
     }
