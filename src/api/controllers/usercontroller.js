@@ -15,7 +15,9 @@ const loginUser = async (req,res) => {
             return res.status(404).json({message : 'invalid password'});
         }
         const token = generateSign(userData._id , userData.email)
+        console.log( "user:" , userData , "token:", token);
         return res.status(200).json({userData, token}); //GENERATE TOKEN
+        
     } catch (error) {
         return res.status(500).json(error)
     }
@@ -41,9 +43,9 @@ const userRegister = async (req, res) => {
 
         newUser.password = bcrypt.hashSync(newUser.password, 10); //HASH PASSWORD
         const newEmail = await newUser.save(); // SAVE THE NEW USER
-
-        return res.status(201).json(newEmail);
-
+        const token = generateSign(newEmail._id , newEmail.email)
+        console.log(`user: ${newEmail} , token: ${token}`);
+        return res.status(201).json({newEmail, token});
 
     } catch (error) {
         return res.status(500).json(error);
