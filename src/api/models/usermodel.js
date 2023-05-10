@@ -8,7 +8,8 @@ const userSchema = new Schema(
         pets:[{ type:String , required: false}], //Array para almacenar las mascotas de Usuario
         favorites: [{type:String , required: false}], //Almacenamos Favoritos
         adoptionStatus: [{type:String, required:false}],
-        role: {type: String , default: 'user', enum:'user'}
+        role: {type: String , default: 'user', enum:'user'},
+        imagen: {type: String, required:false, default:"https://res.cloudinary.com/dpekebzbd/image/upload/v1683714441/Lucky/MicrosoftTeams-image_1_khngd3.png"}
     },{
         timestamps:true
     }
