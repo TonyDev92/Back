@@ -7,7 +7,7 @@ const deleteFile = (url) => {
     const folder = imageSplited[imageSplited.length - 2];
     const imageToDelete = `${folder}/${nameSplited[0]}`;
 
-    if(imageToDelete !== "Games/photogeneric_z3drsc"){
+    if(imageToDelete !== ""){
         cloudinary.uploader.destroy(imageToDelete, ()=> console.log('Image erased from cloudinary.'));
     }
 

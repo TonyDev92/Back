@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const {generateSign} = require('../../utils/jsw');
 const {validateEmail, validateEmailOnUse , validatePassword} = require('../../utils/validators');
 const { put } = require('../routes/animales.routes');
+const { deleteFile } = require('../../middleware/delete.file');
 
 //LOGIN USER METHOD
 const loginUser = async (req,res) => {
@@ -53,15 +54,25 @@ const userRegister = async (req, res) => {
     }
 }
 
-const putUser = async (req,res) => {
-
+const updateUserImage = async (req, res) => {
     try {
         const { id } = req.params;
         const putUser = new User(req.body);
         putUser._id = id;
-    } catch (error) {
         
-    }
-}
+        if(req.file) {
+            putUser.imagen = req.file.path;
+        }
 
-module.exports = {loginUser , userRegister};
+        const updatedUser = await User.findByIdAndUpdate(id , putUser);
+
+        if(updatedUser.imagen){
+            deleteFile(updatedUser.imagen)
+        }
+        return !updatedUser ? res.status(404).json({ message : "user not found"}) : res.status(200).json(updatedUser);
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+};
+
+module.exports = {loginUser , userRegister ,updateUserImage};
