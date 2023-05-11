@@ -2,8 +2,9 @@ const User = require('../models/usermodel');
 const bcrypt = require('bcrypt');
 const {generateSign} = require('../../utils/jsw');
 const {validateEmail, validateEmailOnUse , validatePassword} = require('../../utils/validators');
-const multer = require('multer');
-const cloudinary = require('cloudinary').v2;
+const { put } = require('../routes/animales.routes');
+const { deleteFile } = require('../../middleware/delete.file');
+
 //LOGIN USER METHOD
 const loginUser = async (req,res) => {
 
@@ -55,23 +56,23 @@ const userRegister = async (req, res) => {
 
 const updateUserImage = async (req, res) => {
     try {
-        const uploadResult = await cloudinary.uploader.upload(req.file.path);
-        const imageUrl = uploadResult.secure_url;
-        const user = await User.findByIdAndUpdate(
-            req.params.id,
-            { imagen: imageUrl },
-            { new: true }
-        );
-
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+        const { id } = req.params;
+        const putUser = new User(req.body);
+        putUser._id = id;
+        
+        if(req.file) {
+            putUser.imagen = req.file.path;
         }
 
-        return res.status(200).json(user);
+        const updatedUser = await User.findByIdAndUpdate(id , putUser);
+
+        if(updatedUser.imagen){
+            deleteFile(updatedUser.imagen)
+        }
+        return !updatedUser ? res.status(404).json({ message : "user not found"}) : res.status(200).json(updatedUser);
     } catch (error) {
-        return res.status(500).json(error);
+        return res.status(500).json(error)
     }
 };
-  
-  module.exports = { loginUser, userRegister, updateUserImage, multerUpload }; // actualizado
-  
+
+module.exports = {loginUser , userRegister ,updateUserImage};
