@@ -11,7 +11,7 @@ const loginUser = async (req,res) => {
         if(!userData){
             return res.status(404).json({message: 'invalid email address'}); //TEST EMAIL
         }
-        if(!bcrypt.compareSync(req.body.password , userData.password)){     //TEST PASSWORD
+        if(!bcrypt.compareSync(req.body.password , userData.password)){//TEST PASSWORD
             return res.status(404).json({message : 'invalid password'});
         }
         const token = generateSign(userData._id , userData.email)
